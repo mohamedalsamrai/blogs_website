@@ -20,13 +20,14 @@
                     <h3 class="poppins-bold-italic text-primry1 text-h3 xm:text-h3sm">Sign Up</h3>
                 </div>
                 <div>
-                    <form>
+                    <form action="{{route('register')}}" method="POST" id="sign-up-form">
+                        @csrf
                         <label for="name" class="poppins-medium text-primry ">Name</label>
-                        <input type="text" id="name" placeholder="Enter your name"
+                        <input type="text" id="name" placeholder="Enter your name" name="name" value="{{ old('name') }}"
                             class="w-full border border-gray-300 rounded-lg px-3 py-3.5 focus:border-gray-300 focus:ring-0 focus:outline-none mt-1 mb-6"
                             required>
                         <label for="email" class="poppins-medium text-primry ">Email</label>
-                        <input type="email" id="email" placeholder="Enter your email"
+                        <input type="email" id="email" placeholder="Enter your email" name="email" value="{{ old('email') }}"
                             class="w-full border border-gray-300 rounded-lg px-3 py-3.5 focus:border-gray-300 focus:ring-0 focus:outline-none mt-1 mb-6"
                             required>
                         <div class="relative w-full"><label for="password" class="poppins-medium text-primry ">Password</label>
@@ -38,10 +39,15 @@
                                     </svg>
                                     
                         </div>
-                        <label for="cpass" class="poppins-medium text-primry ">Confirm password</label>
-                        <input type="password" id="cpass" placeholder="Enter again"
+                        <label for="confirm_password" class="poppins-medium text-primry  ">Confirm password</label>
+                        <input type="password" id="confirm_password" placeholder="Enter again"  name="password"
                             class="w-full border border-gray-300 rounded-lg px-3 py-3.5 focus:border-gray-300 focus:ring-0 focus:outline-none mt-1 mb-9 "
                             required>
+                            @if($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="mb-8 text-red-600">{{ $error }}</div>
+                            @endforeach
+                        @endif
                        <button type="submit" class="bg-primry text-white poppins-semibold py-3.5 w-full rounded-2xl text-bouttom hover:bg-black">Sign Up</button>
                     </form>
                     <div class="text-center mt-6">

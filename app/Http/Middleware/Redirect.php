@@ -18,7 +18,7 @@ class Redirect
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() && $request->routeIs('sign-in') || $request->routeIs('sign-up')){
+        if(Auth::check() &&( $request->routeIs('sign-in') || $request->routeIs('sign-up'))){
             return redirect()->route('home');
 
         }

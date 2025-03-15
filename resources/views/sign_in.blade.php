@@ -37,7 +37,7 @@
                        <button type="submit" class="bg-primry text-white poppins-semibold py-3.5 w-full rounded-2xl text-bouttom hover:bg-black md:mt-14 xm:mt-14 xl:mt-14">Sign In</button>
                     </form>
                     <div class="text-center mt-6">
-                        <p class="poppins-medium text-primry1">Don't have an account ? <a href="/sign-up"
+                        <p class="poppins-medium text-primry1">Don't have an account ? <a href="{{ route(name: 'sign-up') }}"
                                 class="text-primry">Sign up</a></p>
                 </div>
             </div>
