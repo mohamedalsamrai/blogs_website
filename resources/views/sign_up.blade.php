@@ -45,7 +45,7 @@
                        <button type="submit" class="bg-primry text-white poppins-semibold py-3.5 w-full rounded-2xl text-bouttom hover:bg-black">Sign Up</button>
                     </form>
                     <div class="text-center mt-6">
-                        <p class="poppins-medium text-primry1">Do you have an account ? <a href="/sign-in"
+                        <p class="poppins-medium text-primry1">Do you have an account ? <a href="{{ route(name: 'sign-in') }}"
                                 class="text-primry">Sign in</a></p>
                 </div>
             </div>
