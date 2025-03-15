@@ -29,5 +29,22 @@ class AuthController extends Controller
        Auth::login($user);
        return redirect()->route('home');
    }
+   public function signIn(Request $request)
+   {
+     $credentials=  $request->validate([
+           'email' => 'required|email',
+           'password' => 'required|min:6'
+       ]);
+       if(Auth::attempt($credentials,true)){
+        Auth::login(Auth::user());
+           return redirect()->route('home');
+       }
+       return redirect()->back()->withErrors(['Email or Password not correct'])->withInput();
+   }
+   public function signOut()
+   {
+       Auth::logout();
+       return redirect()->route('sign-in');
+   }
    
 }

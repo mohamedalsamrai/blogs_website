@@ -20,3 +20,4 @@ Route::middleware([Redirect::class])->group(function () {
     })->name('sign-up');
 });
 Route::post('/sign-up', [AuthController::class, 'signUp'])->name('register');
+Route::post('/sign-in', [AuthController::class, 'signIn'])->name('login');
