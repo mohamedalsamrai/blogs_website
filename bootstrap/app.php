@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\BlogMiddleware;
 use App\Http\Middleware\Redirect;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;

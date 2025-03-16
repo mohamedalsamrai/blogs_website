@@ -58,24 +58,41 @@ class BlogsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Blog $blog)
     {
-        //
+        return view('blogs.edit',compact('blog'));
     }
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Blog $blog)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255|min:5',
+            'category' => 'required|in:Sport,Technology,Business,Health',
+            'content' => 'required|min:10',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageUrl = $blog->image;
+        if($request->hasFile('image')){
+            $imageUrl= url( 'storage/' . $request->file('image')->store('images','public'));
+        }
+        $blog->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'category' => $request->category,
+            'image' => $imageUrl
+        ]);
+        return redirect()->route('home');
+    
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        return redirect()->route('home');
     }
 }

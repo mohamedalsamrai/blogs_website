@@ -42,6 +42,7 @@
                     <option value="Business">Business</option>
                     <option value="Health">Health</option>
                 </select>
+                
             </div>
              <div>   <label for="image" class="poppins-medium text-primry">Image</label>
                 <input type="file" name="image" id="image" class="w-full py-3.5 mt-1 mb-6" required >
@@ -52,11 +53,7 @@
          
 
             <button type="submit" class="bg-primry text-white poppins-semibold w-28 rounded-2xl text-[16px] hover:bg-black h-11 mr-3">
-                @isset($task)
-                Edit
-            @else
-                Add 
-            @endisset </button>
+               {{ isset($blog) ? 'Edit' : 'Add' }} </button>
             <form action="{{ route('home') }}">
                 <button type="submit" class="bg-[#EFEFEF] text-black poppins-semibold w-28 rounded-2xl text-[16px] hover:bg-[#979797] h-11">Cancel</button>
             </form>
