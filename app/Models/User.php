@@ -17,6 +17,10 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
     protected $fillable = [
         'name',
         'email',

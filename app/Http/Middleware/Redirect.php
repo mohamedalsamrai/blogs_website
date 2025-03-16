@@ -22,7 +22,7 @@ class Redirect
             return redirect()->route('home');
 
         }
-        if(!Auth::check() && $request->routeIs('home')|| $request->path() == '/'){
+        if(!Auth::check() && ( $request->routeIs('home') || $request->path() == '/')){
             return redirect()->route('sign-in');
         }
         return $next($request);
