@@ -11,7 +11,7 @@ Route::middleware([Redirect::class])->group(function () {
         return view('blogs.index');
     })->name('index');
     Route::get('/home', function () {
-        return view('home');
+        return redirect()->route('blogs.index');
     })->name('home');
     Route::get('/sign-in', function () {
         return view('sign_in');
