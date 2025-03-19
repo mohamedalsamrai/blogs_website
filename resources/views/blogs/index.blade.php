@@ -16,19 +16,19 @@
 <div>
     <div class="xl:px-8 md:px-8 mt-5 flex justify-between items-center xm:px-3.5">
         <div class="xl:flex items-center xm:block md:flex">
-            <h3 class="poppins-bold-italic text-primry xl:text-h3sm md:text-h3sm mr-8 xm:mb-8 xl:mb-0 md:mb-0 xm:text-[20px]">
-                Think Verse
+            <h3 class="poppins-bold-italic text-primry xl:text-h3sm md:text-h3sm mr-8 xm:mb-4 xl:mb-0 md:mb-0 xm:text-[22px]">
+               <a href="{{route('blogs.index')}}"> Think Verse</a>
             </h3>
-            <div class="flex space-x-8 poppins-semibold xm:space-x-[37%]">
+            <div class="flex space-x-8 poppins-semibold xm:space-x-[37%] ">
                 @foreach (['Sport', 'Technology', 'Business', 'Health'] as $filter)
-                    <a href="#" class="text-gray-600 hover:text-primary xl:text-sm xm:text-[11px]">{{ $filter }}</a>
+                    <a href="{{route('blogs.index',['filter'=>$filter])}}" class="text-gray-600 hover:text-primary xl:text-sm xm:text-[11px]">{{ $filter }}</a>
                 @endforeach
             </div>
         </div>
-        <div class="flex items-center space-x-8 xm:mb-12 xl:mb-0 md:mb-0">
+        <div class="flex items-center space-x-8 xm:mb-8 xl:mb-0 md:mb-0 ">
             <a href="{{ route('blogs.create') }}" class="poppins-semibold text-primry1 xl:text-sm xm:text-[11px]">Create</a>
             
-            <a href="{{ route('home') }}">
+            <a href="{{ route('profile') }}">
                 @if(auth()->user() && auth()->user()->image)
                     <img src="{{ auth()->user()->image }}" alt="Profile" class="w-[35px] h-[35px] rounded-full object-cover">
                 @else
@@ -40,9 +40,14 @@
             </a>
         </div>
     </div>
-    <div class="items-center flex justify-center mt-28 text-primry xl:text-[60px] poppins-semibold xm:text-[36px] xm:mt-16">
+    <div class="items-center flex justify-center mt-28 text-primry xl:text-[60px] poppins-semibold xm:text-[36px] xm:mt-11">
         <h1>
-            All Posts
+          @if (request()->has('filter'))
+            {{ request('filter') }}
+              
+          @else
+            All Blogs
+          @endif
         </h1>
     </div>
     <div>

@@ -11,10 +11,17 @@ class BlogsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = Blog::all();
-        return view('blogs.index',['blogs' => $blogs]);
+        $filter = $request->input('filter', '');
+        
+        if ($filter) {
+            $blogs = Blog::category($filter)->get();
+        } else {
+            $blogs = Blog::latest()->get();
+        }
+        
+        return view('blogs.index', ['blogs' => $blogs]);
     }
 
     /**
@@ -84,7 +91,7 @@ class BlogsController extends Controller
             'category' => $request->category,
             'image' => $imageUrl
         ]);
-        return redirect()->route('home');
+        return redirect()->route('blogs.index');
     
     }
 
@@ -94,6 +101,6 @@ class BlogsController extends Controller
     public function destroy(Blog $blog)
     {
         $blog->delete();
-        return redirect()->route('home');
+        return redirect()->route('profile');
     }
 }
