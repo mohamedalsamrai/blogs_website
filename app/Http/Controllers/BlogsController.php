@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class BlogsController extends Controller
 {
@@ -58,10 +59,15 @@ class BlogsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Blog $blog)
     {
-        //
+
+        $blogs = Blog::where('category', $blog->category)->latest()->get();
+        $user = User::find($blog->user_id);
+    
+        return view('blogs.show', compact('blog', 'blogs', 'user'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
