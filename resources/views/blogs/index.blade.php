@@ -19,13 +19,13 @@
             <h3 class="poppins-bold-italic text-primry xl:text-h3sm md:text-h3sm mr-8 xm:mb-4 xl:mb-0 md:mb-0 xm:text-[22px]">
                <a href="{{route('blogs.index')}}"> Think Verse</a>
             </h3>
-            <div class="flex space-x-8 poppins-semibold xm:space-x-[37%] ">
+            <div class="flex space-x-8 poppins-semibold xm:space-x-8 xm:mt-10 xl:mt-0 md:mt-0">
                 @foreach (['Sport', 'Technology', 'Business', 'Health'] as $filter)
                     <a href="{{route('blogs.index',['filter'=>$filter])}}" class="text-gray-600 hover:text-primary xl:text-sm xm:text-[11px]">{{ $filter }}</a>
                 @endforeach
             </div>
         </div>
-        <div class="flex items-center space-x-8 xm:mb-8 xl:mb-0 md:mb-0 ">
+        <div class="flex items-center space-x-8 xm:mb-14 xl:mb-0 md:mb-0 ">
             <a href="{{ route('blogs.create') }}" class="poppins-semibold text-primry1 xl:text-sm xm:text-[11px]">Create</a>
             
             <a href="{{ route('profile') }}">
