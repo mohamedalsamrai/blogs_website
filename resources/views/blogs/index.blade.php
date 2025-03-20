@@ -16,7 +16,7 @@
 <div>
     <div class="xl:px-8 md:px-8 mt-5 flex justify-between items-center xm:px-3.5">
         <div class="xl:flex items-center xm:block md:flex">
-            <h3 class="poppins-bold-italic text-primry xl:text-h3sm md:text-h3sm  xm:mb-4 xl:mb-0 md:mb-0 xm:text-[22px]">
+            <h3 class="poppins-bold-italic text-primry xl:text-h3sm md:text-h3sm  xm:mb-4 xl:mb-0 md:mb-0 xm:text-[22px] xl:mr-4 xm:mr-0">
                <a href="{{route('blogs.index')}}"> Think Verse</a>
             </h3>
             <div class="flex space-x-8 poppins-semibold xm:space-x-5 xm:mt-7 xl:mt-0 md:mt-0">
